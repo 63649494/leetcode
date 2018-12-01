@@ -35,7 +35,23 @@ for (int i = 0; i < len; i++) {
 }
 
 ****************/
-
+int removeDuplicates(int* nums, int numsSize) {
+        int n=numsSize;
+    for(int i=0;i<n;i++)
+        //每次检查数组中有无重复数
+        for(int j=i+1;j<n;j++){
+            if(nums[i]==nums[j]){
+                    //j之后的都向前一个位置
+                    for(int m=j;m<n-1;m++)
+                        nums[m]=nums[m+1];
+                    n=n-1;
+                    j=j-1;
+                }
+            else continue;
+        }
+        return n;
+}
+/*************
 int removeDuplicates(int* nums, int numsSize) {
     int n=numsSize;
     for(int i=0;i<n;i++)
@@ -56,3 +72,5 @@ int removeDuplicates(int* nums, int numsSize) {
         }
     return n;
 }
+若不要求原地这个方法时间复杂度等小点
+*****************/

@@ -23,8 +23,9 @@
 **************/
 void rotate(int* nums, int numsSize, int k) {
     //每个元素向右移动一个
-    int t1=nums[numsSize-1];
+    
     for(int j=0;j<k;j++){
+		int t1=nums[numsSize-1];
         for(int i=0;i<numsSize;i++){
             int t2=nums[i];
             nums[i]=t1;
