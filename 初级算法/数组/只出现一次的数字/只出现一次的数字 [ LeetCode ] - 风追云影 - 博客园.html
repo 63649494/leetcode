@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.cnblogs.com/zfLee/p/9330127.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
+<title>只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园</title>
+<meta property="og:description" content="给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。 说明： 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？ 示例 1: 示例">
+<link type="text/css" rel="stylesheet" href="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/bundle-darkgreentrip.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/bundle-darkgreentrip-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/zfLee/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/zfLee/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/zfLee/wlwmanifest.xml">
+<script src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/osd.js"></script><script src="https://cdn.ampproject.org/rtv/011811091519050/amp4ads-host-v0.js"></script><script src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/pubads_impl_rendering_275.js"></script><script async="" src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/analytics.js"></script><script type="text/javascript" src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/encoder.js"></script><script src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'zfLee', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/blog-common.js" type="text/javascript"></script>
+<link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.cnblogs.com" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=www.cnblogs.com"></script><script src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/pubads_impl_275.js" async=""></script></head><remove-web-limits-iqxin id="rwl-iqxin" class="rwl-exempt" style="position: fixed; top: 77px; left: 0px;"><button type="button" id="rwl-setbtn"> set </button> <lalala style="cursor:move;">限制解除</lalala> <input type="checkbox" name="" id="black_node"><style type="text/css">#rwl-iqxin{position:fixed;transform:translate(-90px,0);width:85px;height:25px;font-size:12px;font-weight: 500;font-family:Verdana, Arial, '宋体';color:#fff;background:#333;z-index:2147483647;margin: 0;opacity:0.05;transition:0.3s;overflow:hidden;user-select:none;text-align:center;white-space:nowrap;line-height:25px;padding:0 16px;border:1px solid #ccc;border-width:1px 1px 1px 0;border-bottom-right-radius:5px;box-sizing: content-box;}#rwl-iqxin input{margin: 0;padding: 0;vertical-align:middle;-webkit-appearance:checkbox;-moz-appearance:checkbox;position: static;clip: auto;opacity: 1;cursor: pointer;}#rwl-iqxin.rwl-active-iqxin{left: 0px;transform:translate(0,0);opacity: 0.9;height: 32px;line-height: 32px}#rwl-iqxin label{margin:0;padding:0;font-weight:500;}#rwl-iqxin button{margin: 0;padding: 0 2px;border: none;border-radius: 2px;cursor: pointer;}#rwl-setMenu{text-align:left;font-size:14px;z-index:999999;border: 1px solid cornflowerblue;}#rwl-setMenu p{margin:5px auto;} </style></remove-web-limits-iqxin>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="https://www.cnblogs.com/zfLee/"><img id="blogLogo" src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/zfLee/">风追云影</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/zfLee/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E9%A3%8E%E8%BF%BD%E4%BA%91%E5%BD%B1">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/zfLee/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="https://www.cnblogs.com/zfLee/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 11&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 2</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/zfLee/p/9330127.html">只出现一次的数字 [ LeetCode ]</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p>
+<p>说明：</p>
+<p>你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</p>
+<p>示例 1:</p>
+<div class="cnblogs_code">
+<pre>输入: [2,2,1<span style="color: #000000">]
+输出: </span>1</pre>
+</div>
+<p>&nbsp;</p>
+<p>示例&nbsp;2:</p>
+<div class="cnblogs_code">
+<pre>输入: [4,1,2,1,2<span style="color: #000000">]
+输出: </span>4</pre>
+</div>
+<hr>
+<p>以上是原题</p>
+<hr>
+<p>&nbsp;</p>
+<p>OK，先找出题目中的重点要求：</p>
+<p>　　1、<span style="background-color: #ff9900"><strong>线性时间复杂度</strong></span>：要求我们的代码时间复杂度最高为O(n)，不能有嵌套循环等。</p>
+<p>　　2、<span style="background-color: #ff9900"><strong>不使用额外空间</strong></span>：要求空间复杂度最高为O(1)。</p>
+<p>除此之外，还有重要的信息：</p>
+<ul>
+<li>除了某个元素只出现一次以外，其余每个元素<span style="background-color: #ff9900">均出现两次<span style="background-color: #ffffff">。</span></span></li>
+</ul>
+<p><span style="background-color: #ff9900"><span style="background-color: #ffffff">　　这个条件非常关键，一开始自己审题不清楚没注意到均出现两次这个关键点，按照其他元素出现多次的情况处理了，这样导致思路受限很多。</span></span></p>
+<p><span style="background-color: #ff9900"><span style="background-color: #ffffff">开始解题：</span></span></p>
+<p><span style="background-color: #ff9900"><span style="background-color: #ffffff">方法一（比较法）：</span></span></p>
+<p><span style="background-color: #ff9900"><span style="background-color: #ffffff">　　思路：先对数组进行排序，然后对 nums[i] 和 nums[i + 1]进行比较，如相等，i += 2，继续下一组比较，直到取到不相等的一组。</span></span></p>
+<p><span style="background-color: #ff9900"><span style="background-color: #ffffff">　　注意：首先这个数组的长度肯定是奇数（目标数字只出现一次，其他所有数字出现两次），所以如果上述步骤没有找到不相等的一组数，那么肯定是数组的最后一个数字是单独出现的。</span></span></p>
+<p><span style="background-color: #ff9900"><span style="background-color: #ffffff">　　代码如下：</span></span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080"> 1</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">static</span> <span style="color: #0000ff">int</span> singleNumber(<span style="color: #0000ff">int</span><span style="color: #000000">[] nums) {
+</span><span style="color: #008080"> 2</span>         Arrays.sort(nums);  <span style="color: #008000">//</span><span style="color: #008000"> 排序数组</span>
+<span style="color: #008080"> 3</span>         <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> i = 0; i &lt; nums.length - 1; i += 2<span style="color: #000000">) {
+</span><span style="color: #008080"> 4</span>             <span style="color: #008000">//</span><span style="color: #008000"> 找到不相等的一组，直接返回</span>
+<span style="color: #008080"> 5</span>             <span style="color: #0000ff">if</span> (nums[i] != nums[i + 1<span style="color: #000000">]) {
+</span><span style="color: #008080"> 6</span>                 <span style="color: #0000ff">return</span><span style="color: #000000"> nums[i];
+</span><span style="color: #008080"> 7</span> <span style="color: #000000">            }
+</span><span style="color: #008080"> 8</span> <span style="color: #000000">        }
+</span><span style="color: #008080"> 9</span>         <span style="color: #008000">//</span><span style="color: #008000"> 如果没有找到不相等的一组数据，直接返回数组的最后一个数字</span>
+<span style="color: #008080">10</span>         <span style="color: #0000ff">return</span> nums[nums.length - 1<span style="color: #000000">];
+</span><span style="color: #008080">11</span>     }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>方法二（去重法）：</p>
+<p>　　思路：利用HashSet的特性，删除重复的数组元素，最后剩下一个单独的元素，返回即可。</p>
+<p>　　直接上代码：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080">1</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">static</span> <span style="color: #0000ff">int</span> singleNumber(<span style="color: #0000ff">int</span><span style="color: #000000">[] nums) {
+</span><span style="color: #008080">2</span>         Set&lt;Integer&gt; set = <span style="color: #0000ff">new</span> HashSet&lt;&gt;<span style="color: #000000">();
+</span><span style="color: #008080">3</span>         <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> i = 0; i &lt; nums.length; i++<span style="color: #000000">) {
+</span><span style="color: #008080">4</span>             <span style="color: #0000ff">if</span> (!set.add(nums[i])) { <span style="color: #008000">//</span><span style="color: #008000"> add成功返回true，如果set中已有相同数字，则add方法会返回false</span>
+<span style="color: #008080">5</span>                 set.remove(nums[i]); <span style="color: #008000">//</span><span style="color: #008000"> 删除重复出现的数字</span>
+<span style="color: #008080">6</span> <span style="color: #000000">            }
+</span><span style="color: #008080">7</span> <span style="color: #000000">        }
+</span><span style="color: #008080">8</span>         <span style="color: #0000ff">return</span> set.iterator().next();<span style="color: #008080">9</span>     }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>方法三（求差法）：</p>
+<p>　　思路：先对数组排序，显而易见的，单独出现一次的数据必然是出现在数组下标为偶数的位置（下标从0开始），那么所有奇数下标的元素之和减去偶数下标的元素之和，就是需要求得的结果。</p>
+<p>　　代码如下：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080">1</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">static</span> <span style="color: #0000ff">int</span> singleNumber(<span style="color: #0000ff">int</span><span style="color: #000000">[] nums) {
+</span><span style="color: #008080">2</span>         <span style="color: #0000ff">int</span> num = 0<span style="color: #000000">;
+</span><span style="color: #008080">3</span> <span style="color: #000000">        Arrays.sort(nums);
+</span><span style="color: #008080">4</span>         <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> i = 0; i &lt; nums.length; i++<span style="color: #000000">) {
+</span><span style="color: #008080">5</span>             <span style="color: #008000">//</span><span style="color: #008000"> 偶数下标位置 num += nums[i]，奇数下标位置 num -= nums[i]</span>
+<span style="color: #008080">6</span>             num = i % 2 == 0 ? num + nums[i] : num -<span style="color: #000000"> nums[i];
+</span><span style="color: #008080">7</span> <span style="color: #000000">        }
+</span><span style="color: #008080">8</span>         <span style="color: #0000ff">return</span><span style="color: #000000"> num;
+</span><span style="color: #008080">9</span>     }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><strong>方法四（异或法）</strong>：</p>
+<p>　　思路：根据异或运算的特点，相同的数字经过异或运算后结果为0，除单独出现一次的数字外，其他数字都是出现两次的，那么这些数字经过异或运算后结果一定是0。而任何数字与0进行异或运算都是该数字本身。所以对数组所有元素进行异或运算，运算结果就是题目的答案。</p>
+<p>　　上代码：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080">1</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">static</span> <span style="color: #0000ff">int</span> singleNumber(<span style="color: #0000ff">int</span><span style="color: #000000">[] nums) {
+</span><span style="color: #008080">2</span>         <span style="color: #0000ff">int</span> num = 0<span style="color: #000000">;
+</span><span style="color: #008080">3</span>         <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> i = 0; i &lt; nums.length; i++<span style="color: #000000">) {
+</span><span style="color: #008080">4</span>             num = num ^<span style="color: #000000"> nums[i];
+</span><span style="color: #008080">5</span> <span style="color: #000000">        }
+</span><span style="color: #008080">6</span>         <span style="color: #0000ff">return</span><span style="color: #000000"> num;
+</span><span style="color: #008080">7</span>     }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>总结：</p>
+<p><span style="background-color: #ff9900"><span style="background-color: #ffffff">　　其实严格来讲，只有第四种方式是题目想要的解法，其他三种方法都是有瑕疵的。</span></span></p>
+<p><span style="background-color: #ff9900"><span style="background-color: #ffffff">　　方法一、方法三都用到了Arrays.sort(int[] a)的方法，我们先来看JDK提供的数组排序方法：</span></span></p>
+<div class="cnblogs_code">
+<pre><span style="color: #008080">1</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">static</span> <span style="color: #0000ff">void</span> sort(<span style="color: #0000ff">int</span><span style="color: #000000">[] a) {
+</span><span style="color: #008080">2</span>         DualPivotQuicksort.sort(a, 0, a.length - 1, <span style="color: #0000ff">null</span>, 0, 0<span style="color: #000000">);
+</span><span style="color: #008080">3</span>     }</pre>
+</div>
+<p>　　调用了DualPivotQuicksort类的静态方法：</p>
+<div class="cnblogs_code"><img id="code_img_closed_77f31fa4-3135-4119-ae96-efb649462c7e" class="code_img_closed" src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_77f31fa4-3135-4119-ae96-efb649462c7e" class="code_img_opened" style="display: none" src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_77f31fa4-3135-4119-ae96-efb649462c7e" class="cnblogs_code_hide">
+<pre><span style="color: #008080">  1</span>     <span style="color: #008000">/**</span>
+<span style="color: #008080">  2</span> <span style="color: #008000">     * Sorts the specified range of the array using the given
+</span><span style="color: #008080">  3</span> <span style="color: #008000">     * workspace array slice if possible for merging
+</span><span style="color: #008080">  4</span> <span style="color: #008000">     *
+</span><span style="color: #008080">  5</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> a the array to be sorted
+</span><span style="color: #008080">  6</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> left the index of the first element, inclusive, to be sorted
+</span><span style="color: #008080">  7</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> right the index of the last element, inclusive, to be sorted
+</span><span style="color: #008080">  8</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> work a workspace array (slice)
+</span><span style="color: #008080">  9</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> workBase origin of usable space in work array
+</span><span style="color: #008080"> 10</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> workLen usable size of work array
+</span><span style="color: #008080"> 11</span>      <span style="color: #008000">*/</span>
+<span style="color: #008080"> 12</span>     <span style="color: #0000ff">static</span> <span style="color: #0000ff">void</span> sort(<span style="color: #0000ff">int</span>[] a, <span style="color: #0000ff">int</span> left, <span style="color: #0000ff">int</span><span style="color: #000000"> right,
+</span><span style="color: #008080"> 13</span>                      <span style="color: #0000ff">int</span>[] work, <span style="color: #0000ff">int</span> workBase, <span style="color: #0000ff">int</span><span style="color: #000000"> workLen) {
+</span><span style="color: #008080"> 14</span>         <span style="color: #008000">//</span><span style="color: #008000"> Use Quicksort on small arrays</span>
+<span style="color: #008080"> 15</span>         <span style="color: #0000ff">if</span> (right - left &lt;<span style="color: #000000"> QUICKSORT_THRESHOLD) {
+</span><span style="color: #008080"> 16</span>             sort(a, left, right, <span style="color: #0000ff">true</span><span style="color: #000000">);
+</span><span style="color: #008080"> 17</span>             <span style="color: #0000ff">return</span><span style="color: #000000">;
+</span><span style="color: #008080"> 18</span> <span style="color: #000000">        }
+</span><span style="color: #008080"> 19</span> 
+<span style="color: #008080"> 20</span>         <span style="color: #008000">/*</span>
+<span style="color: #008080"> 21</span> <span style="color: #008000">         * Index run[i] is the start of i-th run
+</span><span style="color: #008080"> 22</span> <span style="color: #008000">         * (ascending or descending sequence).
+</span><span style="color: #008080"> 23</span>          <span style="color: #008000">*/</span>
+<span style="color: #008080"> 24</span>         <span style="color: #0000ff">int</span>[] run = <span style="color: #0000ff">new</span> <span style="color: #0000ff">int</span>[MAX_RUN_COUNT + 1<span style="color: #000000">];
+</span><span style="color: #008080"> 25</span>         <span style="color: #0000ff">int</span> count = 0; run[0] =<span style="color: #000000"> left;
+</span><span style="color: #008080"> 26</span> 
+<span style="color: #008080"> 27</span>         <span style="color: #008000">//</span><span style="color: #008000"> Check if the array is nearly sorted</span>
+<span style="color: #008080"> 28</span>         <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> k = left; k &lt; right; run[count] =<span style="color: #000000"> k) {
+</span><span style="color: #008080"> 29</span>             <span style="color: #0000ff">if</span> (a[k] &lt; a[k + 1]) { <span style="color: #008000">//</span><span style="color: #008000"> ascending</span>
+<span style="color: #008080"> 30</span>                 <span style="color: #0000ff">while</span> (++k &lt;= right &amp;&amp; a[k - 1] &lt;=<span style="color: #000000"> a[k]);
+</span><span style="color: #008080"> 31</span>             } <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (a[k] &gt; a[k + 1]) { <span style="color: #008000">//</span><span style="color: #008000"> descending</span>
+<span style="color: #008080"> 32</span>                 <span style="color: #0000ff">while</span> (++k &lt;= right &amp;&amp; a[k - 1] &gt;=<span style="color: #000000"> a[k]);
+</span><span style="color: #008080"> 33</span>                 <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> lo = run[count] - 1, hi = k; ++lo &lt; --<span style="color: #000000">hi; ) {
+</span><span style="color: #008080"> 34</span>                     <span style="color: #0000ff">int</span> t = a[lo]; a[lo] = a[hi]; a[hi] =<span style="color: #000000"> t;
+</span><span style="color: #008080"> 35</span> <span style="color: #000000">                }
+</span><span style="color: #008080"> 36</span>             } <span style="color: #0000ff">else</span> { <span style="color: #008000">//</span><span style="color: #008000"> equal</span>
+<span style="color: #008080"> 37</span>                 <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> m = MAX_RUN_LENGTH; ++k &lt;= right &amp;&amp; a[k - 1] ==<span style="color: #000000"> a[k]; ) {
+</span><span style="color: #008080"> 38</span>                     <span style="color: #0000ff">if</span> (--m == 0<span style="color: #000000">) {
+</span><span style="color: #008080"> 39</span>                         sort(a, left, right, <span style="color: #0000ff">true</span><span style="color: #000000">);
+</span><span style="color: #008080"> 40</span>                         <span style="color: #0000ff">return</span><span style="color: #000000">;
+</span><span style="color: #008080"> 41</span> <span style="color: #000000">                    }
+</span><span style="color: #008080"> 42</span> <span style="color: #000000">                }
+</span><span style="color: #008080"> 43</span> <span style="color: #000000">            }
+</span><span style="color: #008080"> 44</span> 
+<span style="color: #008080"> 45</span>             <span style="color: #008000">/*</span>
+<span style="color: #008080"> 46</span> <span style="color: #008000">             * The array is not highly structured,
+</span><span style="color: #008080"> 47</span> <span style="color: #008000">             * use Quicksort instead of merge sort.
+</span><span style="color: #008080"> 48</span>              <span style="color: #008000">*/</span>
+<span style="color: #008080"> 49</span>             <span style="color: #0000ff">if</span> (++count ==<span style="color: #000000"> MAX_RUN_COUNT) {
+</span><span style="color: #008080"> 50</span>                 sort(a, left, right, <span style="color: #0000ff">true</span><span style="color: #000000">);
+</span><span style="color: #008080"> 51</span>                 <span style="color: #0000ff">return</span><span style="color: #000000">;
+</span><span style="color: #008080"> 52</span> <span style="color: #000000">            }
+</span><span style="color: #008080"> 53</span> <span style="color: #000000">        }
+</span><span style="color: #008080"> 54</span> 
+<span style="color: #008080"> 55</span>         <span style="color: #008000">//</span><span style="color: #008000"> Check special cases
+</span><span style="color: #008080"> 56</span>         <span style="color: #008000">//</span><span style="color: #008000"> Implementation note: variable "right" is increased by 1.</span>
+<span style="color: #008080"> 57</span>         <span style="color: #0000ff">if</span> (run[count] == right++) { <span style="color: #008000">//</span><span style="color: #008000"> The last run contains one element</span>
+<span style="color: #008080"> 58</span>             run[++count] =<span style="color: #000000"> right;
+</span><span style="color: #008080"> 59</span>         } <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (count == 1) { <span style="color: #008000">//</span><span style="color: #008000"> The array is already sorted</span>
+<span style="color: #008080"> 60</span>             <span style="color: #0000ff">return</span><span style="color: #000000">;
+</span><span style="color: #008080"> 61</span> <span style="color: #000000">        }
+</span><span style="color: #008080"> 62</span> 
+<span style="color: #008080"> 63</span>         <span style="color: #008000">//</span><span style="color: #008000"> Determine alternation base for merge</span>
+<span style="color: #008080"> 64</span>         <span style="color: #0000ff">byte</span> odd = 0<span style="color: #000000">;
+</span><span style="color: #008080"> 65</span>         <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> n = 1; (n &lt;&lt;= 1) &lt; count; odd ^= 1<span style="color: #000000">);
+</span><span style="color: #008080"> 66</span> 
+<span style="color: #008080"> 67</span>         <span style="color: #008000">//</span><span style="color: #008000"> Use or create temporary array b for merging</span>
+<span style="color: #008080"> 68</span>         <span style="color: #0000ff">int</span>[] b;                 <span style="color: #008000">//</span><span style="color: #008000"> temp array; alternates with a</span>
+<span style="color: #008080"> 69</span>         <span style="color: #0000ff">int</span> ao, bo;              <span style="color: #008000">//</span><span style="color: #008000"> array offsets from 'left'</span>
+<span style="color: #008080"> 70</span>         <span style="color: #0000ff">int</span> blen = right - left; <span style="color: #008000">//</span><span style="color: #008000"> space needed for b</span>
+<span style="color: #008080"> 71</span>         <span style="color: #0000ff">if</span> (work == <span style="color: #0000ff">null</span> || workLen &lt; blen || workBase + blen &gt;<span style="color: #000000"> work.length) {
+</span><span style="color: #008080"> 72</span>             work = <span style="color: #0000ff">new</span> <span style="color: #0000ff">int</span><span style="color: #000000">[blen];
+</span><span style="color: #008080"> 73</span>             workBase = 0<span style="color: #000000">;
+</span><span style="color: #008080"> 74</span> <span style="color: #000000">        }
+</span><span style="color: #008080"> 75</span>         <span style="color: #0000ff">if</span> (odd == 0<span style="color: #000000">) {
+</span><span style="color: #008080"> 76</span> <span style="color: #000000">            System.arraycopy(a, left, work, workBase, blen);
+</span><span style="color: #008080"> 77</span>             b =<span style="color: #000000"> a;
+</span><span style="color: #008080"> 78</span>             bo = 0<span style="color: #000000">;
+</span><span style="color: #008080"> 79</span>             a =<span style="color: #000000"> work;
+</span><span style="color: #008080"> 80</span>             ao = workBase -<span style="color: #000000"> left;
+</span><span style="color: #008080"> 81</span>         } <span style="color: #0000ff">else</span><span style="color: #000000"> {
+</span><span style="color: #008080"> 82</span>             b =<span style="color: #000000"> work;
+</span><span style="color: #008080"> 83</span>             ao = 0<span style="color: #000000">;
+</span><span style="color: #008080"> 84</span>             bo = workBase -<span style="color: #000000"> left;
+</span><span style="color: #008080"> 85</span> <span style="color: #000000">        }
+</span><span style="color: #008080"> 86</span> 
+<span style="color: #008080"> 87</span>         <span style="color: #008000">//</span><span style="color: #008000"> Merging</span>
+<span style="color: #008080"> 88</span>         <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> last; count &gt; 1; count =<span style="color: #000000"> last) {
+</span><span style="color: #008080"> 89</span>             <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> k = (last = 0) + 2; k &lt;= count; k += 2<span style="color: #000000">) {
+</span><span style="color: #008080"> 90</span>                 <span style="color: #0000ff">int</span> hi = run[k], mi = run[k - 1<span style="color: #000000">];
+</span><span style="color: #008080"> 91</span>                 <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> i = run[k - 2], p = i, q = mi; i &lt; hi; ++<span style="color: #000000">i) {
+</span><span style="color: #008080"> 92</span>                     <span style="color: #0000ff">if</span> (q &gt;= hi || p &lt; mi &amp;&amp; a[p + ao] &lt;= a[q +<span style="color: #000000"> ao]) {
+</span><span style="color: #008080"> 93</span>                         b[i + bo] = a[p++ +<span style="color: #000000"> ao];
+</span><span style="color: #008080"> 94</span>                     } <span style="color: #0000ff">else</span><span style="color: #000000"> {
+</span><span style="color: #008080"> 95</span>                         b[i + bo] = a[q++ +<span style="color: #000000"> ao];
+</span><span style="color: #008080"> 96</span> <span style="color: #000000">                    }
+</span><span style="color: #008080"> 97</span> <span style="color: #000000">                }
+</span><span style="color: #008080"> 98</span>                 run[++last] =<span style="color: #000000"> hi;
+</span><span style="color: #008080"> 99</span> <span style="color: #000000">            }
+</span><span style="color: #008080">100</span>             <span style="color: #0000ff">if</span> ((count &amp; 1) != 0<span style="color: #000000">) {
+</span><span style="color: #008080">101</span>                 <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> i = right, lo = run[count - 1]; --i &gt;=<span style="color: #000000"> lo;
+</span><span style="color: #008080">102</span>                     b[i + bo] = a[i +<span style="color: #000000"> ao]
+</span><span style="color: #008080">103</span> <span style="color: #000000">                );
+</span><span style="color: #008080">104</span>                 run[++last] =<span style="color: #000000"> right;
+</span><span style="color: #008080">105</span> <span style="color: #000000">            }
+</span><span style="color: #008080">106</span>             <span style="color: #0000ff">int</span>[] t = a; a = b; b =<span style="color: #000000"> t;
+</span><span style="color: #008080">107</span>             <span style="color: #0000ff">int</span> o = ao; ao = bo; bo =<span style="color: #000000"> o;
+</span><span style="color: #008080">108</span> <span style="color: #000000">        }
+</span><span style="color: #008080">109</span>     }</pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p>　　代码较长，想看的同学点开看一下，可以发现这个方法的时间复杂度是O(n<sup>3</sup>)，不符合题目的要求<span style="background-color: #ff9900"><strong>线性时间复杂度<span style="background-color: #ffffff">。</span></strong></span></p>
+<p><span style="background-color: #ff9900"><strong><span style="background-color: #ffffff">　　</span></strong><span style="background-color: #ffffff">方法二呢，是利用了HashSet集合不可重复的特性，同样我们来看HashSet的add方法：</span></span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080"> 1</span>     <span style="color: #008000">/**</span>
+<span style="color: #008080"> 2</span> <span style="color: #008000">     * Adds the specified element to this set if it is not already present.
+</span><span style="color: #008080"> 3</span> <span style="color: #008000">     * More formally, adds the specified element &lt;tt&gt;e&lt;/tt&gt; to this set if
+</span><span style="color: #008080"> 4</span> <span style="color: #008000">     * this set contains no element &lt;tt&gt;e2&lt;/tt&gt; such that
+</span><span style="color: #008080"> 5</span> <span style="color: #008000">     * &lt;tt&gt;(e==null&amp;nbsp;?&amp;nbsp;e2==null&amp;nbsp;:&amp;nbsp;e.equals(e2))&lt;/tt&gt;.
+</span><span style="color: #008080"> 6</span> <span style="color: #008000">     * If this set already contains the element, the call leaves the set
+</span><span style="color: #008080"> 7</span> <span style="color: #008000">     * unchanged and returns &lt;tt&gt;false&lt;/tt&gt;.
+</span><span style="color: #008080"> 8</span> <span style="color: #008000">     *
+</span><span style="color: #008080"> 9</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> e element to be added to this set
+</span><span style="color: #008080">10</span> <span style="color: #008000">     * </span><span style="color: #808080">@return</span><span style="color: #008000"> &lt;tt&gt;true&lt;/tt&gt; if this set did not already contain the specified
+</span><span style="color: #008080">11</span> <span style="color: #008000">     * element
+</span><span style="color: #008080">12</span>      <span style="color: #008000">*/</span>
+<span style="color: #008080">13</span>     <span style="color: #0000ff">public</span> <span style="color: #0000ff">boolean</span><span style="color: #000000"> add(E e) {
+</span><span style="color: #008080">14</span>         <span style="color: #0000ff">return</span> map.put(e, PRESENT)==<span style="color: #0000ff">null</span><span style="color: #000000">;
+</span><span style="color: #008080">15</span>     }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>　　其实HashSet的底层是通过HashMap来实现的，HashSet中的元素都是HashMap中的key，再来看HashMap的put方法：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008080"> 1</span>     <span style="color: #008000">/**</span>
+<span style="color: #008080"> 2</span> <span style="color: #008000">     * Associates the specified value with the specified key in this map.
+</span><span style="color: #008080"> 3</span> <span style="color: #008000">     * If the map previously contained a mapping for the key, the old
+</span><span style="color: #008080"> 4</span> <span style="color: #008000">     * value is replaced.
+</span><span style="color: #008080"> 5</span> <span style="color: #008000">     *
+</span><span style="color: #008080"> 6</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> key key with which the specified value is to be associated
+</span><span style="color: #008080"> 7</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> value value to be associated with the specified key
+</span><span style="color: #008080"> 8</span> <span style="color: #008000">     * </span><span style="color: #808080">@return</span><span style="color: #008000"> the previous value associated with &lt;tt&gt;key&lt;/tt&gt;, or
+</span><span style="color: #008080"> 9</span> <span style="color: #008000">     *         &lt;tt&gt;null&lt;/tt&gt; if there was no mapping for &lt;tt&gt;key&lt;/tt&gt;.
+</span><span style="color: #008080">10</span> <span style="color: #008000">     *         (A &lt;tt&gt;null&lt;/tt&gt; return can also indicate that the map
+</span><span style="color: #008080">11</span> <span style="color: #008000">     *         previously associated &lt;tt&gt;null&lt;/tt&gt; with &lt;tt&gt;key&lt;/tt&gt;.)
+</span><span style="color: #008080">12</span>      <span style="color: #008000">*/</span>
+<span style="color: #008080">13</span>     <span style="color: #0000ff">public</span><span style="color: #000000"> V put(K key, V value) {
+</span><span style="color: #008080">14</span>         <span style="color: #0000ff">return</span> putVal(hash(key), key, value, <span style="color: #0000ff">false</span>, <span style="color: #0000ff">true</span><span style="color: #000000">);
+</span><span style="color: #008080">15</span> <span style="color: #000000">    }
+</span><span style="color: #008080">16</span> 
+<span style="color: #008080">17</span>     <span style="color: #008000">/**</span>
+<span style="color: #008080">18</span> <span style="color: #008000">     * Implements Map.put and related methods
+</span><span style="color: #008080">19</span> <span style="color: #008000">     *
+</span><span style="color: #008080">20</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> hash hash for key
+</span><span style="color: #008080">21</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> key the key
+</span><span style="color: #008080">22</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> value the value to put
+</span><span style="color: #008080">23</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> onlyIfAbsent if true, don't change existing value
+</span><span style="color: #008080">24</span> <span style="color: #008000">     * </span><span style="color: #808080">@param</span><span style="color: #008000"> evict if false, the table is in creation mode.
+</span><span style="color: #008080">25</span> <span style="color: #008000">     * </span><span style="color: #808080">@return</span><span style="color: #008000"> previous value, or null if none
+</span><span style="color: #008080">26</span>      <span style="color: #008000">*/</span>
+<span style="color: #008080">27</span>     <span style="color: #0000ff">final</span> V putVal(<span style="color: #0000ff">int</span> hash, K key, V value, <span style="color: #0000ff">boolean</span><span style="color: #000000"> onlyIfAbsent,
+</span><span style="color: #008080">28</span>                    <span style="color: #0000ff">boolean</span><span style="color: #000000"> evict) {
+</span><span style="color: #008080">29</span>         Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span style="color: #0000ff">int</span><span style="color: #000000"> n, i;
+</span><span style="color: #008080">30</span>         <span style="color: #0000ff">if</span> ((tab = table) == <span style="color: #0000ff">null</span> || (n = tab.length) == 0<span style="color: #000000">)
+</span><span style="color: #008080">31</span>             n = (tab =<span style="color: #000000"> resize()).length;
+</span><span style="color: #008080">32</span>         <span style="color: #0000ff">if</span> ((p = tab[i = (n - 1) &amp; hash]) == <span style="color: #0000ff">null</span><span style="color: #000000">)
+</span><span style="color: #008080">33</span>             tab[i] = newNode(hash, key, value, <span style="color: #0000ff">null</span><span style="color: #000000">);
+</span><span style="color: #008080">34</span>         <span style="color: #0000ff">else</span><span style="color: #000000"> {
+</span><span style="color: #008080">35</span>             Node&lt;K,V&gt;<span style="color: #000000"> e; K k;
+</span><span style="color: #008080">36</span>             <span style="color: #0000ff">if</span> (p.hash == hash &amp;&amp;
+<span style="color: #008080">37</span>                 ((k = p.key) == key || (key != <span style="color: #0000ff">null</span> &amp;&amp;<span style="color: #000000"> key.equals(k))))
+</span><span style="color: #008080">38</span>                 e =<span style="color: #000000"> p;
+</span><span style="color: #008080">39</span>             <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (p <span style="color: #0000ff">instanceof</span><span style="color: #000000"> TreeNode)
+</span><span style="color: #008080">40</span>                 e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span style="color: #0000ff">this</span><span style="color: #000000">, tab, hash, key, value);
+</span><span style="color: #008080">41</span>             <span style="color: #0000ff">else</span><span style="color: #000000"> {
+</span><span style="color: #008080">42</span>                 <span style="color: #0000ff">for</span> (<span style="color: #0000ff">int</span> binCount = 0; ; ++<span style="color: #000000">binCount) {
+</span><span style="color: #008080">43</span>                     <span style="color: #0000ff">if</span> ((e = p.next) == <span style="color: #0000ff">null</span><span style="color: #000000">) {
+</span><span style="color: #008080">44</span>                         p.next = newNode(hash, key, value, <span style="color: #0000ff">null</span><span style="color: #000000">);
+</span><span style="color: #008080">45</span>                         <span style="color: #0000ff">if</span> (binCount &gt;= TREEIFY_THRESHOLD - 1) <span style="color: #008000">//</span><span style="color: #008000"> -1 for 1st</span>
+<span style="color: #008080">46</span> <span style="color: #000000">                            treeifyBin(tab, hash);
+</span><span style="color: #008080">47</span>                         <span style="color: #0000ff">break</span><span style="color: #000000">;
+</span><span style="color: #008080">48</span> <span style="color: #000000">                    }
+</span><span style="color: #008080">49</span>                     <span style="color: #0000ff">if</span> (e.hash == hash &amp;&amp;
+<span style="color: #008080">50</span>                         ((k = e.key) == key || (key != <span style="color: #0000ff">null</span> &amp;&amp;<span style="color: #000000"> key.equals(k))))
+</span><span style="color: #008080">51</span>                         <span style="color: #0000ff">break</span><span style="color: #000000">;
+</span><span style="color: #008080">52</span>                     p =<span style="color: #000000"> e;
+</span><span style="color: #008080">53</span> <span style="color: #000000">                }
+</span><span style="color: #008080">54</span> <span style="color: #000000">            }
+</span><span style="color: #008080">55</span>             <span style="color: #0000ff">if</span> (e != <span style="color: #0000ff">null</span>) { <span style="color: #008000">//</span><span style="color: #008000"> existing mapping for key</span>
+<span style="color: #008080">56</span>                 V oldValue =<span style="color: #000000"> e.value;
+</span><span style="color: #008080">57</span>                 <span style="color: #0000ff">if</span> (!onlyIfAbsent || oldValue == <span style="color: #0000ff">null</span><span style="color: #000000">)
+</span><span style="color: #008080">58</span>                     e.value =<span style="color: #000000"> value;
+</span><span style="color: #008080">59</span> <span style="color: #000000">                afterNodeAccess(e);
+</span><span style="color: #008080">60</span>                 <span style="color: #0000ff">return</span><span style="color: #000000"> oldValue;
+</span><span style="color: #008080">61</span> <span style="color: #000000">            }
+</span><span style="color: #008080">62</span> <span style="color: #000000">        }
+</span><span style="color: #008080">63</span>         ++<span style="color: #000000">modCount;
+</span><span style="color: #008080">64</span>         <span style="color: #0000ff">if</span> (++size &gt;<span style="color: #000000"> threshold)
+</span><span style="color: #008080">65</span> <span style="color: #000000">            resize();
+</span><span style="color: #008080">66</span> <span style="color: #000000">        afterNodeInsertion(evict);
+</span><span style="color: #008080">67</span>         <span style="color: #0000ff">return</span> <span style="color: #0000ff">null</span><span style="color: #000000">;
+</span><span style="color: #008080">68</span>     }</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　请注意：上面 putVal 方法中，调用的&nbsp;resize() 、 putTreeVal() 等方法本身也是O(n<sup>2</sup>)的时间复杂度。不符合题目要求的<strong><span style="background-color: #ff9900">线性时间复杂度</span></strong>。</p>
+<p>　　所以严格来说，只有第四种方式符合题目要求，但我们拓宽思路，能多用几种还算不错的方式实现需求，也是有百利而无一害的，大家也不必非要钻这个牛角尖。</p>
+<p>　　另外，从效率上来讲，第四种效率是最高的，经过测试高出前三种方式1-2个数量级。只是在普通的业务代码中，用到异或运算的地方并不多，不太容易想到这种方式，这个就考验大家的基础功底了。</p>
+<p>　　</p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/zfLee/category/850635.html" target="_blank">算法</a></div>
+<div id="EntryTag">标签: <a href="https://www.cnblogs.com/zfLee/tag/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>, <a href="https://www.cnblogs.com/zfLee/tag/%E7%AE%97%E6%B3%95/">算法</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(9330127,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;fa546d3d-f3e3-e511-9fc1-ac853d9f53cc&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/zfLee/" target="_blank"><img src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/20160307073644.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/zfLee/">风追云影</a><br>
+            <a href="http://home.cnblogs.com/u/zfLee/followees">关注 - 4</a><br>
+            <a href="http://home.cnblogs.com/u/zfLee/followers">粉丝 - 1</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;fa546d3d-f3e3-e511-9fc1-ac853d9f53cc&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(9330127,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(9330127,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/zfLee/p/9328633.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/zfLee/p/9328633.html" title="发布于2018-07-18 13:21">旋转数组 [ LeetCode ]</a><br><a href="https://www.cnblogs.com/zfLee/p/9332552.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/zfLee/p/9332552.html" title="发布于2018-07-18 20:57">两个数组的交集 II [ LeetCode - 350 ]</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2018-07-18 16:43</span> <a href="https://www.cnblogs.com/zfLee/">风追云影</a> 阅读(<span id="post_view_count">880</span>) 评论(<span id="post_comment_count">1</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=9330127" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/zfLee/p/9330127.html#" onclick="AddToWz(9330127);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=271029,cb_entryId=9330127,cb_blogApp=currentBlogApp,cb_blogUserGuid='fa546d3d-f3e3-e511-9fc1-ac853d9f53cc',cb_entryCreatedDate='2018/7/18 16:43:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="https://www.cnblogs.com/zfLee/p/9330127.html#4124256" class="layer">#1楼</a><a name="4124256" id="comment_anchor_4124256"></a><span id="comment-maxId" style="display:none;">4124256</span><span id="comment-maxDate" style="display:none;">2018/11/27 20:03:31</span>  <span class="comment_date">2018-11-27 20:03</span> <a id="a_comment_author_4124256" href="https://www.cnblogs.com/q032324/" target="_blank">非fei</a> <a href="http://msg.cnblogs.com/send/%E9%9D%9Efei" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_4124256" class="blog_comment_body">有几点 <br>    sort()方法的排序复杂度应该是O(lgn)<br>    hashMap扩容从一个宏观的角度来看是O(1)的时间复杂度 因为不是每一次    插入数据都需要扩容</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(4124256,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(4124256,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_4124256_avatar" style="display:none;">http://pic.cnblogs.com/face/1485591/20180909145638.png</span>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/zfLee/p/9330127.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/zfLee/p/9330127.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="http://clickc.admaster.com.cn/c/a116493,b2949399,c1705,i0,m101,8a1,8b3,h" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-华为云&#39;)">【活动】申请成为华为云云享专家 尊享9大权益</a><br><a href="https://cloud.tencent.com/act/group/amd/index?fromSource=gwzcw.1608278.1608278.1608278" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-腾讯云&#39;)">【腾讯云】拼团福利，AMD云服务器8元/月</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://cloud.tencent.com/act/special/amd?fromSource=gwzcw.1351353.1351353.1351353" target="_blank"><img width="300" height="250" src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/24442-20181129113406214-695115565.jpg" alt="腾讯云1129" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C1&#39;);"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>相关博文：</b><br>·  <a href="https://www.cnblogs.com/flashBoxer/p/9484945.html" target="_blank" onclick="clickRecomItmem(9484945,&#39;UINXq0ZQIXB4FUQzH/7aE/kESjrguzGgO+ZW8cJJyZdOcXwGJ2k56GUD7t7wB65PljVlv3LszPOl6d8TGGKlOcHjZ3uVnIOjafyAySNooXrrqNlTZKSbXjB5klux+V13Rhp7yynJHI10u9fM&#39;)">【leetcode 简单】第三十四题 只出现一次的数字</a><br>·  <a href="https://www.cnblogs.com/jimobuwu/p/8992036.html" target="_blank" onclick="clickRecomItmem(8992036,&#39;JD/Bj+YwlqeFmGM9lUwo6UApORzQ02Zj1u13dB41kUHJG1B6yLAw+SUDgaubRNhrGfYLseCmVX/I00EqVAKdvflO09y5kK0C8t90Tl/98I7ejtz0YTIu40+IxUj+bFUXOcMfzaXAGiNG3tire7o=&#39;)">只出现一次的数字</a><br>·  <a href="https://www.cnblogs.com/qinziang/p/9201797.html" target="_blank" onclick="clickRecomItmem(9201797,&#39;YAgrizmZcQrKdnHgWNk4J60+y3AFVt2h5vo/6WN8PkAJXn0EDCgOXRgcAScqTcC1oC/B0jD+R2N/TYKQWVp9SY049a5TIcZ+PJrPlRUb9TwElA9g4SfqOsIJcct1KFwrN5cdd/sjpcc6DF/b&#39;)">★ Leetcode-探索 | 只出现一次的数字</a><br>·  <a href="https://www.cnblogs.com/hanfight/p/4069294.html" target="_blank" onclick="clickRecomItmem(4069294,&#39;JN9uBP/HQhz05jArk1xYyrhCEvUP7ROb/o3rZs7Q9kDOukuEKOS6Onqgr6y9WmyRGNHLZur2Go6BthYkAcdtaTTTi8Uc7C2n54/9KnglDIy6Bx91eXsSGVf2sgIrsalWphbT70aVDG1JgqGJurA=&#39;)">数组中只出现一次的数字</a><br>·  <a href="https://www.cnblogs.com/beliveli/p/9004039.html" target="_blank" onclick="clickRecomItmem(9004039,&#39;ldPRbmsmR7GToNT0wWuxxT//b8FbPBqEnc/T1Q6mFNMab4SbTu2jIr+SVQAboriRu0Xv+J6yPqFrsXoM2i3sZmaQL7gt9ipq+HO4VF8/zkx5tUH+m5dgHeJKic8UQVXhLTJWYPJBgLmJzpoYuyc=&#39;)">leetCode 只出现一次的数字 问题记录</a><br></div></div>
+<script async="async" src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/gpt.js"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;" data-google-query-id="CIT2tLnc_t4CFRa_vQodH24LlA">
+    <script>
+    if (new Date() >= new Date(2018, 9, 13)) {
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1539008685004-0'); });
+    }
+    </script>
+    <div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C2_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C2_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/saved_resource.html"></iframe></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block"><b>最新新闻</b>：<br> ·  <a href="https://news.cnblogs.com/n/613747/" target="_blank">这份价值上亿的创业教训，有人为你买单了</a><br> ·  <a href="https://news.cnblogs.com/n/613706/" target="_blank">小米说，要开源</a><br> ·  <a href="https://news.cnblogs.com/n/613741/" target="_blank">徐小平答王峰十问：创业黄金十年结束 白金十年扑面而来</a><br> ·  <a href="https://news.cnblogs.com/n/613755/" target="_blank">这8名硅谷员工没能抓住机遇 与亿万富翁失之交臂</a><br> ·  <a href="https://news.cnblogs.com/n/613754/" target="_blank">共享充电宝纠纷终审：街电停用侵权产品并赔来电85万元</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/zfLee/">风追云影</a><br>园龄：<a href="https://home.cnblogs.com/u/zfLee/" title="入园时间：2016-03-07">2年8个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/zfLee/followers/">1</a><br>关注：<a href="https://home.cnblogs.com/u/zfLee/followees/">4</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;fa546d3d-f3e3-e511-9fc1-ac853d9f53cc&#39;)">+加关注</a></div><script>getFollowStatus('fa546d3d-f3e3-e511-9fc1-ac853d9f53cc')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/11/01&#39;);return false;">&lt;</a></td><td align="center">2018年12月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2019/01/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalTodayDay" align="center">1</td></tr><tr><td class="CalWeekendDay" align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td class="CalWeekendDay" align="center">8</td></tr><tr><td class="CalWeekendDay" align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td class="CalWeekendDay" align="center">15</td></tr><tr><td class="CalWeekendDay" align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td class="CalWeekendDay" align="center">22</td></tr><tr><td class="CalWeekendDay" align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td class="CalWeekendDay" align="center">29</td></tr><tr><td class="CalWeekendDay" align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/zfLee/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/zfLee/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/zfLee/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/zfLee/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/zfLee/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/zfLee/tag/%E7%AE%97%E6%B3%95/">算法</a>(6)</li><li><a href="https://www.cnblogs.com/zfLee/tag/LeetCode%E5%88%B7%E9%A2%98/">LeetCode刷题</a>(5)</li><li><a href="https://www.cnblogs.com/zfLee/tag/git/">git</a>(2)</li><li><a href="https://www.cnblogs.com/zfLee/tag/spring/">spring</a>(1)</li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="https://www.cnblogs.com/zfLee/category/843388.html">Git(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="https://www.cnblogs.com/zfLee/category/854816.html">spring框架(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="https://www.cnblogs.com/zfLee/category/850635.html">算法(7)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="https://www.cnblogs.com/zfLee/archive/2018/07.html">2018年7月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="https://www.cnblogs.com/zfLee/archive/2017/10.html">2017年10月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="https://www.cnblogs.com/zfLee/archive/2016/07.html">2016年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="https://www.cnblogs.com/zfLee/archive/2016/06.html">2016年6月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/zfLee/p/9330127.html#4124256">1. Re:只出现一次的数字 [ LeetCode ]</a></li>
+        <li class="recent_comment_body">有几点 <br>    sort()方法的排序复杂度应该是O(lgn)<br>    hashMap扩容从一个宏观的角度来看是O(1)的时间复杂度 因为不是每一次    插入数据都需要扩容</li>
+        <li class="recent_comment_author">--非fei</li>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/zfLee/p/5601243.html#3894750">2. Re:Git基本用法简介</a></li>
+        <li class="recent_comment_body">写的很好，简单易学，新手都可以过来看看，期待博主的下一篇</li>
+        <li class="recent_comment_author">--Pzhenzhen</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/zfLee/p/5601243.html">1. Git基本用法简介(2080)</a></li><li><a href="https://www.cnblogs.com/zfLee/p/9330127.html">2. 只出现一次的数字 [ LeetCode ](880)</a></li><li><a href="https://www.cnblogs.com/zfLee/p/9332552.html">3. 两个数组的交集 II [ LeetCode - 350 ](636)</a></li><li><a href="https://www.cnblogs.com/zfLee/p/5654296.html">4. 基础算法介绍 —— 二分查找算法(543)</a></li><li><a href="https://www.cnblogs.com/zfLee/p/5626382.html">5. Git远程仓库的使用(github为例)(226)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="https://www.cnblogs.com/zfLee/p/5601243.html">1. Git基本用法简介(1)</a></li><li><a href="https://www.cnblogs.com/zfLee/p/9330127.html">2. 只出现一次的数字 [ LeetCode ](1)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap" style="display: none;">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 风追云影
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+<iframe id="google_osd_static_frame_1427238633628" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./只出现一次的数字 [ LeetCode ] - 风追云影 - 博客园_files/saved_resource(1).html"></iframe></body></html>
