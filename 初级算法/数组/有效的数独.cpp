@@ -75,8 +75,11 @@ int CompareR(char arr[],int boardRowSize){
 bool isValidSudoku(char** board, int boardRowSize, int boardColSize) {
     //数字 1-9 在每一行只能出现一次。
     for(int i=0;i<boardRowSize;i++)
-        if(CompareR(board[i],boardRowSize)==1)
+        if(CompareR(board[i],boardRowSize)==1){
+            printf("R false");
             return false;
+        }
+            
         //数字 1-9 在每一列只能出现一次。
     for(int i=0;i<boardRowSize;i++){
         for(int j=0;j<boardColSize;j++)
@@ -87,14 +90,40 @@ bool isValidSudoku(char** board, int boardRowSize, int boardColSize) {
                 if(board[k][i]=='.')
                 continue;
                 else{
-                    if(board[k][i]==board[j][i])
+                    if(board[k][i]==board[j][i]){
+                        printf("C false");
                         return false;//重复假
+                    }
+                        
                 }
             }
         }
     }
             //数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。
-    
-    for()
+    int a=0,b=0;
+    for(int i=0;i<9;i++){
+    //小九宫格中的查重，将二维数组里的值提取到一维数组中降低时间复杂度
+        char arr[]={board[a][b],board[a][b+1],board[a][b+2],board[a+1][b],board[a+1][b+1],board[a+1][b+2],board[a+2][b],board[a+2][b+1],board[a+2][b+2]};
+        for(int o=0;o<9;o++)
+            printf("%c ",arr[o]);
+        printf("\n");
+        for(int j=0;j<9;j++){
+            //if(arr[i]=='.') continue;
+            for(int k=j+1;k<9;k++){
+                if(arr[k]=='.') continue;
+                if(arr[k]==arr[j]){
+                    printf("\nA false");
+                    return false;
+                }
+            }
+        }
+        //换行
+        if(b==6){
+            a=a+3;
+            b=0;
+        }
+        else b=b+3;
+    }
+
     return true;
 }
